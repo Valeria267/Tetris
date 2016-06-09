@@ -120,7 +120,7 @@ namespace Tetris
 
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)// клавиши для перемещения фигур
         {
 
             if (e.KeyCode == Keys.Left)
@@ -146,7 +146,7 @@ namespace Tetris
 
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Для перемещения фигуры используйте клавиши клавиатура вправо и влево. Для быстрого перемешения фигуры вниз используйте клавишу вниз. Для поворота фигуры нажмите клавищу вверх. Для начала игры нажмите Новая игра.", "");
+            MessageBox.Show("Для перемещения фигуры используйте клавиши клавиатура вправо и влево. Для быстрого перемешения фигуры вниз используйте клавишу вниз. Для поворота фигуры нажмите клавищу вверх. Для начала игры нажмите Новая игра.", "Справка");
 
         }
     }

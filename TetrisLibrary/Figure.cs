@@ -13,7 +13,7 @@ namespace Tetris
         public List<int> MoveRight;//элементы для проверки движения вправо
         public List<int> MoveLeft;//элементы для проверки движения влево
         public List<int> MoveUp;//элементы для проверки движения вверх
-        private int rotationElement;// элемент, неперемещаемый во время поворота фигуры
+        private int _rotationElement;// элемент, неперемещаемый во время поворота фигуры
         public List<Square> ListElement;//элементы
         public Color color;//цвет фигуры
         
@@ -34,7 +34,7 @@ namespace Tetris
                     MoveRight = new List<int> { 1, 3 };
                     MoveLeft = new List<int> { 0, 2 };
                     MoveUp = new List<int> { 0, 1 };
-                    rotationElement = 0;
+                    _rotationElement = 0;
                     color = Color.Red;
                     ; break;
                 case 2:
@@ -49,7 +49,7 @@ namespace Tetris
                     MoveRight = new List<int> { 0, 1, 2, 3 };
                     MoveLeft = MoveRight;
                     MoveUp = new List<int> { 0 };
-                    rotationElement = 0;
+                    _rotationElement = 0;
                     color = Color.SlateBlue;
                     break;
                 case 3:
@@ -64,7 +64,7 @@ namespace Tetris
                     MoveRight = new List<int> { 0, 3 };
                     MoveLeft = new List<int> { 0, 1 };
                     MoveUp = new List<int> { 0, 1, 3 };
-                    rotationElement = 1;
+                    _rotationElement = 1;
                     color = Color.Aqua;
                     break;
                 case 4:
@@ -79,7 +79,7 @@ namespace Tetris
                     MoveRight = new List<int> { 0, 1, 2 };
                     MoveLeft = new List<int> { 0, 1, 3 };
                     MoveUp = new List<int> { 0, 3 };
-                    rotationElement = 1;
+                    _rotationElement = 1;
                     color = Color.Yellow;
                     break;
                 case 5:
@@ -94,7 +94,7 @@ namespace Tetris
                     MoveRight = new List<int> { 1, 3 };
                     MoveLeft = new List<int> { 0, 2 };
                     MoveUp = new List<int> { 0, 1, 3 };
-                    rotationElement = 2;
+                    _rotationElement = 2;
                     color = Color.SpringGreen;
                     break;
                 case 6:
@@ -109,7 +109,7 @@ namespace Tetris
                     MoveRight = new List<int> { 0, 1, 3 };
                     MoveLeft = new List<int> { 0,1,2 };
                     MoveUp = new List<int> { 0,3 };
-                    rotationElement = 1;
+                    _rotationElement = 1;
                     color = Color.PeachPuff;
                     break;
                 case 7:
@@ -124,7 +124,7 @@ namespace Tetris
                     MoveRight = new List<int> { 0, 2 };
                     MoveLeft = new List<int> { 1, 3 };
                     MoveUp = new List<int> { 0, 1, 3 };
-                    rotationElement = 1;
+                    _rotationElement = 1;
                     color = Color.OrangeRed;
                     break;
 
@@ -166,7 +166,7 @@ namespace Tetris
         }
         public void Rotation(int[,] playingField)//метод вращения 
         {
-            if ((ListElement[rotationElement].cow>1)&&(ListElement[rotationElement].cow < playingField.GetLength(1)-1)&&(ListElement[rotationElement].row < playingField.GetLength(0)-1))
+            if ((ListElement[_rotationElement].cow>1)&&(ListElement[_rotationElement].cow < playingField.GetLength(1)-1)&&(ListElement[_rotationElement].row < playingField.GetLength(0)-1))
             {
                 int temp;
                 List<int> tempList;
@@ -175,8 +175,8 @@ namespace Tetris
                 {
                     playingField[items.row, items.cow] = 0;
                     temp = items.cow;
-                    items.cow = ListElement[rotationElement].cow - items.row + ListElement[rotationElement].row;
-                    items.row = ListElement[rotationElement].row + temp - ListElement[rotationElement].cow;
+                    items.cow = ListElement[_rotationElement].cow - items.row + ListElement[_rotationElement].row;
+                    items.row = ListElement[_rotationElement].row + temp - ListElement[_rotationElement].cow;
                     playingField[items.row, items.cow] = 1;
                 }
 
